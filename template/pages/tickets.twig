@@ -1,0 +1,16 @@
+<h1>Tickets</h1>
+<a href="/new">Create Ticket</a>
+
+<table>
+  <tr><th>Title</th><th>Status</th><th>Actions</th></tr>
+  {% for t in tickets %}
+  <tr>
+    <td>{{ t.title }}</td>
+    <td>{{ t.status }}</td>
+    <td>
+      <a href="/edit/{{ t.id }}">Edit</a> |
+      <a href="/delete/{{ t.id }}">Delete</a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>

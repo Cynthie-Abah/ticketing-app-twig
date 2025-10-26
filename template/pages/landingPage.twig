@@ -1,0 +1,89 @@
+ {% extends "/home.twig" %}
+{% block content %}
+<div class="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+  <section class="relative bg-gradient-to-br from-blue-400 to-blue-800 text-white overflow-hidden">
+    <!-- DECORATION -->
+    <div class="absolute top-15 right-10 w-80 h-80 bg-blue-200 rounded-full opacity-20 blur-3xl"></div>
+    <div class="absolute bottom-15 left-15 w-96 h-96 bg-blue-200 rounded-full opacity-20 blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 w-full h-32 bg-blue-800 opacity-30 blur-2xl"></div>
+    <div class="absolute -top-20 -left-20 w-96 h-96 bg-white opacity-10 rounded-full"></div>
+    <div class="absolute bottom-60 right-20 w-64 h-64 bg-white opacity-8 rounded-full"></div>
+
+    <!-- HERO -->
+    <div class="relative max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+      <div class="text-center max-w-4xl mx-auto">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">TicketFlow</h1>
+        <p class="text-xl sm:text-2xl max-w-9/12 m-auto text-blue-100 mb-10 leading-relaxed">
+          Streamline Your Ticket Management <br>
+          Track, manage, and resolve tickets with ease. Built for teams that value efficiency and clarity.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          {% if user %}
+            <a href="/dashboard" class="bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl">Go to Dashboard</a>
+          {% else %}
+            <div class="flex gap-10">
+              <a href="/signup" class="bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl">Get Started</a>
+              <a href="/login" class="bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-800 transition-all border-2 border-white">Login</a>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <!-- WAVY BG -->
+    <svg class="absolute bottom-0 left-0 w-full" viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,64C960,75,1056,85,1152,80C1248,75,1344,53,1392,42.7L1440,32L1440,120L0,120Z" fill="rgb(249, 250, 251)" />
+    </svg>
+  </section>
+
+  <!-- FEATURES SECTION -->
+  <section class="relative py-20">
+    <div class="absolute top-40 right-20 w-48 h-48 bg-blue-200 rounded-full opacity-30"></div>
+
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Why Choose TicketFlow?</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Everything you need to manage tickets efficiently in one powerful platform</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white shadow-lg rounded-xl p-6 text-center">
+          <h3 class="text-xl font-semibold text-blue-600 mb-2">Lightning Fast</h3>
+          <p class="text-gray-600">Create and update tickets in seconds. Our intuitive interface keeps you productive.</p>
+        </div>
+
+        <div class="bg-white shadow-lg rounded-xl p-6 text-center">
+          <h3 class="text-xl font-semibold text-green-600 mb-2">Secure & Private</h3>
+          <p class="text-gray-600">Your data is protected with industry-standard encryption and security measures.</p>
+        </div>
+
+        <div class="bg-white shadow-lg rounded-xl p-6 text-center">
+          <h3 class="text-xl font-semibold text-amber-600 mb-2">Insightful Analytics</h3>
+          <p class="text-gray-600">Track your progress with real-time statistics and comprehensive dashboards.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="relative py-20 bg-gray-50">
+    <div class="absolute bottom-20 left-10 w-64 h-64 bg-blue-200 rounded-full opacity-20"></div>
+
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-r from-blue-600 to-blue-800 rounded-3xl shadow-2xl p-12 text-center text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-10 rounded-full -mr-32 -mt-32"></div>
+        <div class="relative z-10">
+          <h2 class="text-3xl sm:text-4xl font-bold mb-4">Ready to Get Started?</h2>
+          <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+            Join thousands of teams already using TicketFlow to streamline their workflow
+          </p>
+          {% if not user %}
+            <a href="/signup" class="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl">Create Your Free Account</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}

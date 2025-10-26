@@ -1,0 +1,91 @@
+<header class="bg-white shadow-sm">
+  <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2 text-xl font-bold text-gray-900">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m2 0a2 2 0 100-4H7a2 2 0 100 4h10z" />
+        </svg>
+        <span>TicketFlow</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden sm:flex items-center gap-6">
+        {% if user %}
+          <a href="/dashboard" class="text-gray-700 hover:text-gray-900 font-medium">
+            Dashboard
+          </a>
+          <a href="/dashboard/tickets" class="text-gray-700 hover:text-gray-900 font-medium">
+            Tickets
+          </a>
+          <button
+            id="logout-btn"
+            class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors font-medium"
+          >
+            Logout
+          </button>
+        {% else %}
+          <a href="/signin" class="text-gray-700 hover:text-gray-900 font-medium">
+            Login
+          </a>
+          <a href="/signup" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+            Get Started
+          </a>
+        {% endif %}
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <div class="sm:hidden relative flex items-center">
+        <button
+          id="menu-toggle"
+          class="text-gray-700 text-2xl focus:outline-none"
+        >
+          ☰
+        </button>
+      </div>
+
+      <!-- Mobile Dropdown -->
+      <div id="mobile-menu" class="hidden sm:hidden absolute right-2 top-14 bg-white border-t border-gray-200 shadow-md rounded-xl">
+        <nav class="flex flex-col gap-4 p-4">
+          {% if user %}
+            <a href="/dashboard" class="text-gray-700 hover:text-gray-900 font-medium">Dashboard</a>
+            <a href="/dashboard/tickets" class="text-gray-700 hover:text-gray-900 font-medium">Tickets</a>
+            <button
+              id="mobile-logout-btn"
+              class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors font-medium"
+            >
+              Logout
+            </button>
+          {% else %}
+            <a href="/signin" class="text-gray-700 hover:text-gray-900 font-medium">Login</a>
+            <a href="/signup" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+              Get Started
+            </a>
+          {% endif %}
+        </nav>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+<script>
+  // Handle mobile menu toggle
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  menuToggle?.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+
+  // Logout buttons (to connect with Supabase later)
+  document.getElementById('logout-btn')?.addEventListener('click', async () => {
+    const { error } = await window.supabase.auth.signOut();
+    if (!error) location.href = '/';
+  });
+
+  document.getElementById('mobile-logout-btn')?.addEventListener('click', async () => {
+    const { error } = await window.supabase.auth.signOut();
+    if (!error) location.href = '/';
+  });
+</script>
