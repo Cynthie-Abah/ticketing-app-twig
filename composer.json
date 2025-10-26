@@ -1,0 +1,11 @@
+{
+    "name": "abahcynthia/ticketing-app-twig",
+    "autoload": {
+        "psr-4": {
+            "Abahcynthia\\TicketingAppTwig\\": "src/"
+        }
+    },
+    "require": {
+        "twig/twig": "^3.0"
+    }
+}
